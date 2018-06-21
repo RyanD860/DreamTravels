@@ -1,0 +1,1 @@
+SELECT * FROM have WHERE user_id = $1

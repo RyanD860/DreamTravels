@@ -1,0 +1,1 @@
+SELECT * FROM want WHERE user_id = $1
