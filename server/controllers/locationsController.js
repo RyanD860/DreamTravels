@@ -63,5 +63,18 @@ module.exports = {
         res.send(resp);
       })
       .catch(err => console.log(err));
+  },
+  addToHave: function(req, res, next) {
+    const db = req.app.get("db");
+    db.addToHave([
+      req.session.user.id,
+      req.body.long,
+      req.body.lat,
+      req.body.name
+    ])
+      .then(resp => {
+        res.send(resp);
+      })
+      .catch(err => console.log(err));
   }
 };

@@ -62,6 +62,7 @@ class Search extends Component {
         <FoundPlace
           place={this.state.selectedPlace}
           addToWant={this.props.addToWant}
+          addToHave={this.props.addToHave}
         />
       </div>
     );

@@ -18,6 +18,7 @@ class App extends Component {
       wants: []
     };
     this.addToWant = this.addToWant.bind(this);
+    this.addToHave = this.addToHave.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,11 @@ class App extends Component {
         this.setState({ wants: resp.data });
       });
     }
+    if (this.state.haves.length !== prevState.haves.length) {
+      axios.get("/api/user/haves").then(resp => {
+        this.setState({ haves: resp.data });
+      });
+    }
   }
   addToWant(long, lat, name) {
     axios
@@ -49,6 +55,15 @@ class App extends Component {
       })
       .then(resp => {
         this.setState({ wants: resp.data });
+        console.log(this.state);
+      })
+      .catch(err => console.log(err));
+  }
+  addToHave(long, lat, name) {
+    axios
+      .post("/api/add/have", { long: long, lat: lat, name: name })
+      .then(resp => {
+        this.setState({ haves: resp.data });
         console.log(this.state);
       })
       .catch(err => console.log(err));
@@ -67,7 +82,7 @@ class App extends Component {
               haves={this.state.haves}
               wants={this.state.wants}
             />
-            <Search addToWant={this.addToWant} />
+            <Search addToWant={this.addToWant} addToHave={this.addToHave} />
           </div>
         )}
       </div>

@@ -93,6 +93,7 @@ app.get("/api/place/auto/:search", locCont.autoCompletePlace);
 app.get("/api/place/photo/:photoRef", locCont.getPhoto);
 // POSTS
 app.post("/api/add/want", locCont.addToWant);
+app.post("/api/add/have", locCont.addToHave);
 // EDITS
 
 // DELETES

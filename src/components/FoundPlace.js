@@ -40,6 +40,17 @@ class FoundPlace extends Component {
             >
               Want to go
             </button>
+            <button
+              onClick={() =>
+                this.props.addToHave(
+                  this.props.place.geometry.location.lng,
+                  this.props.place.geometry.location.lat,
+                  this.props.place.name
+                )
+              }
+            >
+              Been There
+            </button>
             <button>Been there, done that</button>
           </div>
         )}
