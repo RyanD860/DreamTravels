@@ -76,5 +76,13 @@ module.exports = {
         res.send(resp);
       })
       .catch(err => console.log(err));
+  },
+  removeFromHave: function(req, res, next) {
+    const db = req.app.get("db");
+    db.removeFromHave([req.params.id, req.session.user.id])
+      .then(resp => {
+        res.send(resp);
+      })
+      .catch(err => console.log(err));
   }
 };
