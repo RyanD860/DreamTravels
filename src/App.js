@@ -19,6 +19,7 @@ class App extends Component {
     };
     this.addToWant = this.addToWant.bind(this);
     this.addToHave = this.addToHave.bind(this);
+    this.removeFromHave = this.removeFromHave.bind(this);
   }
 
   componentDidMount() {
@@ -68,6 +69,14 @@ class App extends Component {
       })
       .catch(err => console.log(err));
   }
+  removeFromHave(id) {
+    axios
+      .delete(`/api/remove/have/${id}`)
+      .then(resp => {
+        this.setState({ haves: resp.data });
+      })
+      .catch(err => console.log(err));
+  }
   render() {
     return (
       <div className="App">
@@ -81,6 +90,7 @@ class App extends Component {
               google={this.props.google}
               haves={this.state.haves}
               wants={this.state.wants}
+              removeFromHave={this.removeFromHave}
             />
             <Search addToWant={this.addToWant} addToHave={this.addToHave} />
           </div>

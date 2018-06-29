@@ -33,6 +33,7 @@ export default class MapContainer extends Component {
 
       this.map = new maps.Map(node, mapConfig); // creates a new Google map on the specified node (ref='map') with the specified configuration set above.
       if (this.props.haves.length > 0) {
+        let that = this;
         this.props.haves.forEach(loc => {
           const marker = new google.maps.Marker({
             position: { lat: Number(loc.lat), lng: Number(loc.long) },
@@ -40,8 +41,18 @@ export default class MapContainer extends Component {
             title: loc.name,
             animation: google.maps.Animation.DROP
           });
+          var content = document.createElement("div");
+          content.innerHTML = loc.name;
+          var button = content.appendChild(document.createElement("input"));
+          button.type = "button";
+          button.id = "showMoreButton";
+          button.value = "Remove";
+          google.maps.event.addDomListener(button, "click", function() {
+            that.props.removeFromHave(loc.id);
+            // this.props.removeFromHave(loc.id);
+          });
           var infowindow = new google.maps.InfoWindow({
-            content: loc.name
+            content: content
           });
           marker.addListener("click", function() {
             infowindow.open(this.map, marker);
@@ -63,6 +74,7 @@ export default class MapContainer extends Component {
             title: loc.name,
             animation: google.maps.Animation.DROP
           });
+
           var infowindow = new google.maps.InfoWindow({
             content: loc.name
           });
