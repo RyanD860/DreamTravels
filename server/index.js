@@ -98,5 +98,6 @@ app.post("/api/add/have", locCont.addToHave);
 
 // DELETES
 app.delete("/api/remove/have/:id", locCont.removeFromHave);
+app.delete("/api/remove/want/:id", locCont.removeFromWant);
 
 app.listen(port, () => [console.log(`Listening on port ${port}`)]);

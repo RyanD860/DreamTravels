@@ -20,6 +20,7 @@ class App extends Component {
     this.addToWant = this.addToWant.bind(this);
     this.addToHave = this.addToHave.bind(this);
     this.removeFromHave = this.removeFromHave.bind(this);
+    this.removeFromWant = this.removeFromWant.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +78,14 @@ class App extends Component {
       })
       .catch(err => console.log(err));
   }
+  removeFromWant(id) {
+    axios
+      .delete(`/api/remove/want/${id}`)
+      .then(resp => {
+        this.setState({ wants: resp.data });
+      })
+      .catch(err => console.log(err));
+  }
   render() {
     return (
       <div className="App">
@@ -91,6 +100,7 @@ class App extends Component {
               haves={this.state.haves}
               wants={this.state.wants}
               removeFromHave={this.removeFromHave}
+              removeFromWant={this.removeFromWant}
             />
             <Search addToWant={this.addToWant} addToHave={this.addToHave} />
           </div>
@@ -101,5 +111,5 @@ class App extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: config.apiKey
+  apiKey: config.mapApiKey
 })(App);

@@ -46,7 +46,7 @@ export default class MapContainer extends Component {
           var button = content.appendChild(document.createElement("input"));
           button.type = "button";
           button.id = "showMoreButton";
-          button.value = "Remove";
+          button.value = "Remove From Have";
           google.maps.event.addDomListener(button, "click", function() {
             that.props.removeFromHave(loc.id);
             // this.props.removeFromHave(loc.id);
@@ -60,6 +60,7 @@ export default class MapContainer extends Component {
         });
       }
       if (this.props.wants.length > 0) {
+        let that = this;
         this.props.wants.forEach(loc => {
           const marker = new google.maps.Marker({
             position: {
@@ -74,9 +75,18 @@ export default class MapContainer extends Component {
             title: loc.name,
             animation: google.maps.Animation.DROP
           });
-
+          var content = document.createElement("div");
+          content.innerHTML = loc.name;
+          var button = content.appendChild(document.createElement("input"));
+          button.type = "button";
+          button.id = "showMoreButton";
+          button.value = "Remove From Want";
+          google.maps.event.addDomListener(button, "click", function() {
+            that.props.removeFromHave(loc.id);
+            // this.props.removeFromHave(loc.id);
+          });
           var infowindow = new google.maps.InfoWindow({
-            content: loc.name
+            content: content
           });
           marker.addListener("click", function() {
             infowindow.open(this.map, marker);

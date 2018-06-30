@@ -84,5 +84,13 @@ module.exports = {
         res.send(resp);
       })
       .catch(err => console.log(err));
+  },
+  removeFromWant: function(req, res, next) {
+    const db = req.app.get("db");
+    db.removeFromWant([req.params.id, req.session.user.id])
+      .then(resp => {
+        res.send(resp);
+      })
+      .catch(err => console.log(err));
   }
 };

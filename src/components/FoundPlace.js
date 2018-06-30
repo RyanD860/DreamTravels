@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import config from "../config";
 
 class FoundPlace extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class FoundPlace extends Component {
             <img
               src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${
                 this.state.image
-              }&key=${process.env.placesAPI}`}
+              }&key=${config.placesApiKey}`}
             />
             <button
               onClick={() =>

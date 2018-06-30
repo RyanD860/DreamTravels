@@ -57,7 +57,6 @@ class Search extends Component {
         <button onClick={() => this.onSubmit(this.state.searchTerm)}>
           Find Place
         </button>
-        <button onClick={() => console.log(this.state)}>State</button>
         <ul>{this.displayLocations()}</ul>
         <FoundPlace
           place={this.state.selectedPlace}
