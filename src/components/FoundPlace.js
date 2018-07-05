@@ -56,6 +56,7 @@ class FoundPlace extends Component {
           <div>
             {this.displayImg()}
             <button
+              className="waves-effect waves-light btn"
               onClick={() =>
                 this.props.addToWant(
                   this.props.place.geometry.location.lng,
@@ -67,6 +68,7 @@ class FoundPlace extends Component {
               Want to go
             </button>
             <button
+              className="waves-effect waves-light btn"
               onClick={() =>
                 this.props.addToHave(
                   this.props.place.geometry.location.lng,
@@ -77,7 +79,6 @@ class FoundPlace extends Component {
             >
               Been There
             </button>
-            <button>Been there, done that</button>
           </div>
         )}
       </div>

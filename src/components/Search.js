@@ -43,7 +43,7 @@ class Search extends Component {
   }
   render() {
     return (
-      <div>
+      <div id="searchBox">
         <h1>Search</h1>
         <input
           type="text"
@@ -54,7 +54,10 @@ class Search extends Component {
           }
           value={this.state.searchTerm}
         />
-        <button onClick={() => this.onSubmit(this.state.searchTerm)}>
+        <button
+          className="waves-effect waves-light btn"
+          onClick={() => this.onSubmit(this.state.searchTerm)}
+        >
           Find Place
         </button>
         <ul>{this.displayLocations()}</ul>
