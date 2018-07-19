@@ -29,7 +29,7 @@ export default class MapContainer extends Component {
           zoom: 5,
           mapTypeId: "roadmap"
         }
-      ); // sets center of google map to NYC. // sets zoom. Lower numbers are zoomed further out. // optional main map layer. Terrain, satellite, hybrid or roadmap--if unspecified, defaults to roadmap.
+      );
 
       this.map = new maps.Map(node, mapConfig); // creates a new Google map on the specified node (ref='map') with the specified configuration set above.
       if (this.props.haves.length > 0) {
@@ -49,7 +49,6 @@ export default class MapContainer extends Component {
           button.value = "Remove From Have";
           google.maps.event.addDomListener(button, "click", function() {
             that.props.removeFromHave(loc.id);
-            // this.props.removeFromHave(loc.id);
           });
           var infowindow = new google.maps.InfoWindow({
             content: content
@@ -98,13 +97,11 @@ export default class MapContainer extends Component {
 
   render() {
     const style = {
-      // MUST specify dimensions of the Google map or it will not work. Also works best when style is specified inside the render function and created as an object
-      width: "50vw", // 90vw basically means take up 90% of the width screen. px also works.
-      height: "85vh" // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
+      width: "50vw",
+      height: "85vh"
     };
 
     return (
-      // in our return function you must return a div with ref='map' and style.
       <div ref="map" style={style}>
         loading map...
       </div>
