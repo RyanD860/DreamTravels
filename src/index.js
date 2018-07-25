@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { Router, Route, IndexRoute } from "react-router";
+import { Route } from "react-router";
 import { HashRouter } from "react-router-dom";
 
 const Root = () => {

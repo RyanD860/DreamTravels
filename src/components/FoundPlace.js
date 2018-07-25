@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import config from "../config";
 
 class FoundPlace extends Component {
@@ -37,11 +36,15 @@ class FoundPlace extends Component {
           src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${
             this.state.image
           }&key=${config.placesApiKey}`}
+          alt={"Place found"}
         />
       );
     } else {
       return (
-        <img src="https://i5.walmartimages.com/asr/f752abb3-1b49-4f99-b68a-7c4d77b45b40_1.39d6c524f6033c7c58bd073db1b99786.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF" />
+        <img
+          src="https://i5.walmartimages.com/asr/f752abb3-1b49-4f99-b68a-7c4d77b45b40_1.39d6c524f6033c7c58bd073db1b99786.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"
+          alt={"No place found"}
+        />
       );
     }
   }

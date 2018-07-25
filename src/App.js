@@ -4,9 +4,9 @@ import "./App.css";
 import routes from "./routes";
 import { GoogleApiWrapper } from "google-maps-react";
 import Header from "./components/Header";
-import MapComponent from "./components/MapComponent";
-import Search from "./components/Search";
 import config from "./config";
+import LoggedIn from "./components/loggedIn";
+import Landing from "./components/Landing";
 
 class App extends Component {
   constructor(props) {
@@ -92,17 +92,18 @@ class App extends Component {
         <Header user={this.state.user} />
         {routes}
         {this.state.user.message ? (
-          false
+          <Landing />
         ) : (
           <div style={{ display: "flex" }}>
-            <MapComponent
+            <LoggedIn
               google={this.props.google}
               haves={this.state.haves}
               wants={this.state.wants}
               removeFromHave={this.removeFromHave}
               removeFromWant={this.removeFromWant}
+              addToWant={this.addToWant}
+              addToHave={this.addToHave}
             />
-            <Search addToWant={this.addToWant} addToHave={this.addToHave} />
           </div>
         )}
       </div>
